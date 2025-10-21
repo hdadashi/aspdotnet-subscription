@@ -1,5 +1,4 @@
-﻿version: '3.8'
-services:
+﻿services:
   postgres:
     image: postgres:15
     environment:
@@ -19,6 +18,24 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+
+  subscriptionservice:
+    build:
+      context: .
+      dockerfile: SubscriptionService/Subscription.API/Dockerfile
+    container_name: subscriptionservice.api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:5001
+      ConnectionStrings__SubscriptionConnectionString: "Host=postgres;Port=5432;Database=subscriptiondb;Username=admin;Password=123456Aa@"
+      RabbitMq__Host: "rabbitmq"
+      RabbitMq__User: "guest"
+      RabbitMq__Pass: "guest"
+    depends_on:
+    - postgres
+    - rabbitmq
+    ports:
+    - "5001:5001"
 
 volumes:
   pgdata:
