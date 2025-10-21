@@ -1,0 +1,17 @@
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\bin\Debug\net9.0\Subscription.Infrastructure.deps.json
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\bin\Debug\net9.0\Subscription.Infrastructure.runtimeconfig.json
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\bin\Debug\net9.0\Subscription.Infrastructure.dll
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\bin\Debug\net9.0\Subscription.Infrastructure.pdb
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\bin\Debug\net9.0\Subscription.Domain.dll
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\bin\Debug\net9.0\Subscription.Domain.pdb
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\Subscription.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\Subscription.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\Subscription.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\Subscription.Infrastructure.AssemblyInfo.cs
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\Subscription.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\Subscrip.33267E8A.Up2Date
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\Subscription.Infrastructure.dll
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\refint\Subscription.Infrastructure.dll
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\Subscription.Infrastructure.pdb
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\Subscription.Infrastructure.genruntimeconfig.cache
+C:\Users\Hossein\RiderProjects\Subscription\SubscriptionService\Subscription.Infrastructure\obj\Debug\net9.0\ref\Subscription.Infrastructure.dll
