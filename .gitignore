@@ -1,2 +1,5 @@
 ﻿/obj
 /Subscription.sln.DotSettings.user
+/.idea
+/SubscriptionService/**/bin/
+/SubscriptionService/**/obj/
