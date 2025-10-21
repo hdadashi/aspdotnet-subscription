@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using MediatR;
 using MassTransit;
+using Subscription.Application;
 using Subscription.Application.Features.Commands.ActivateSubscription;
 using Subscription.Application.Features.Commands.DeactivateSubscription;
 using Subscription.Application.Features.Queries.GetPlans;
 using Subscription.Application.Features.Queries.GetUserSubscription;
 using Subscription.Domain.Common;
+using Subscription.Infrastructure;
 using Subscription.Infrastructure.Repositories;
 using Subscription.Infrastructure.Contracts;
 using Subscription.Infrastructure.Persistence;
@@ -18,7 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // config for Postgres connection string via env or appsettings
-var conn = builder.Configuration.GetConnectionString("SubscriptionConnectionString") 
+var conn = builder.Configuration.GetConnectionString("SubscriptionConnectionString")
            ?? "Host=localhost;Port=5432;Database=subscriptiondb;Username=admin;Password=123456Aa@";
 builder.Services.AddDbContext<SubscriptionDbContext>(opt => opt.UseNpgsql(conn));
 
@@ -42,19 +44,11 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
-// Repos & UoW
-builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-// MediatR
-builder.Services.AddMediatR(cfg =>
-{
-    cfg.RegisterServicesFromAssemblies(
-        typeof(Program).Assembly,
-        typeof(GetUserSubscriptionHandler).Assembly
-    );
-});
-
+builder.Services.AddInfrastructure();
+builder.Services.AddApplication();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Seed initial data
@@ -65,10 +59,18 @@ using (var scope = app.Services.CreateScope())
     await SeedData.InitializeAsync(db);
 }
 
-app.MapGet("/plans", async (IMediator mediator) => await mediator.Send(new GetPlansQuery()));
-app.MapGet("/users/{userId:guid}/subscription", async (Guid userId, IMediator mediator) => await mediator.Send(new GetUserSubscriptionQuery(userId)));
-app.MapPost("/users/{userId:guid}/subscription/activate", async (Guid userId, ActivateRequest req, IMediator mediator) => await mediator.Send(new ActivateSubscriptionCommand(userId, req.PlanId)));
-app.MapPost("/users/{userId:guid}/subscription/deactivate", async (Guid userId, IMediator mediator) => await mediator.Send(new DeactivateSubscriptionCommand(userId)));
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Subscription API v1");
+        c.RoutePrefix = string.Empty;
+    });
+}
+
+app.UseRouting();
+app.MapControllers();
 
 
 app.Run();

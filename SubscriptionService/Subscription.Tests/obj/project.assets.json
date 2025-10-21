@@ -1109,7 +1109,10 @@
           "Microsoft.AspNetCore.OpenApi": "9.0.10",
           "Subscription.Application": "1.0.0",
           "Subscription.Infrastructure": "1.0.0",
-          "Swashbuckle.AspNetCore": "9.0.6"
+          "Swashbuckle.AspNetCore": "9.0.6",
+          "Swashbuckle.AspNetCore.Swagger": "9.0.6",
+          "Swashbuckle.AspNetCore.SwaggerGen": "9.0.6",
+          "Swashbuckle.AspNetCore.SwaggerUI": "9.0.6"
         },
         "compile": {
           "bin/placeholder/Subscription.API.dll": {}
