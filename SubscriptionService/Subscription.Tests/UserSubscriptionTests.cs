@@ -1,4 +1,6 @@
-﻿using Subscription.Domain.Entities;
+﻿using System;
+using Subscription.Domain.Entities;
+using Xunit;
 
 namespace Subscription.Tests;
 

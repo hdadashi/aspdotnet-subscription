@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Subscription.Infrastructure.Seeds;
+using Xunit;
 
 namespace Subscription.Tests;
 
