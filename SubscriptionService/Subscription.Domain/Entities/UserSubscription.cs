@@ -35,7 +35,7 @@ public sealed class UserSubscription
         if (IsActive) return;
         IsActive = true;
         ActivatedAt = DateTime.UtcNow;
-// domain event
+        // domain event
         DomainEvents.DomainEvents.Raise(new SubscriptionActivatedEvent(Id, UserId, PlanId, ActivatedAt.Value));
     }
 
@@ -46,5 +46,16 @@ public sealed class UserSubscription
         IsActive = false;
         DeactivatedAt = DateTime.UtcNow;
         DomainEvents.DomainEvents.Raise(new SubscriptionDeactivatedEvent(Id, UserId, PlanId, DeactivatedAt.Value));
+    }
+    
+    public void UpdatePlan(Guid newPlanId)
+    {
+        if (newPlanId == Guid.Empty)
+            throw new ArgumentException("Plan ID cannot be empty.", nameof(newPlanId));
+
+        if (newPlanId == PlanId)
+            return;
+
+        PlanId = newPlanId;
     }
 }

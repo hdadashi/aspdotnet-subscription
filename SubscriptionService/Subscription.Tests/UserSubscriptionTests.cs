@@ -16,11 +16,7 @@ public class UserSubscriptionTests
         var sub = UserSubscription.Create(userId, oldPlan);
 
         // Act
-        var field = typeof(UserSubscription)
-            .GetProperty("PlanId", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-
-        if (field != null)
-            field.SetValue(sub, newPlan);
+        sub.UpdatePlan(newPlan);
 
         // Assert
         Assert.Equal(newPlan, sub.PlanId);

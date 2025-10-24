@@ -23,7 +23,7 @@ public class ActivateSubscriptionHandler(ISubscriptionRepository subscriptionRep
         else
         {
             // switch plan
-            existing = UpdatePlan(existing, request.PlanId);
+            existing.UpdatePlan(request.PlanId);
             existing.Activate();
             subscriptionRepository.Update(existing);
         }
@@ -36,14 +36,5 @@ public class ActivateSubscriptionHandler(ISubscriptionRepository subscriptionRep
         await uow.PublishDomainEventsAsync(events);
         
         return true;
-    }
-
-
-    private static UserSubscription UpdatePlan(UserSubscription sub, Guid newPlan)
-    {
-        // Since the setter in the UserSubscription entity is private, reflection is used to access it and assign a value.
-        var field = typeof(UserSubscription).GetProperty("PlanId", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-        if (field != null) field.SetValue(sub, newPlan);
-        return sub;
     }
 }
